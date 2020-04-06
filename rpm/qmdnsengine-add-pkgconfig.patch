@@ -1,0 +1,29 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 53ff6ac..04390a1 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -85,3 +85,8 @@ write_basic_package_version_file("${CMAKE_CURRENT_BINARY_DIR}/qmdnsengineConfigV
+ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/qmdnsengineConfigVersion.cmake"
+     DESTINATION "${LIB_INSTALL_DIR}/cmake/qmdnsengine"
+ )
++
++configure_file(qmdnsengine.pc.in "${CMAKE_CURRENT_BINARY_DIR}/qmdnsengine.pc" @ONLY)
++install(FILES "${CMAKE_CURRENT_BINARY_DIR}/qmdnsengine.pc"
++    DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
++)
+diff --git a/src/qmdnsengine.pc.in b/src/qmdnsengine.pc.in
+new file mode 100644
+index 0000000..f89df28
+--- /dev/null
++++ b/src/qmdnsengine.pc.in
+@@ -0,0 +1,10 @@
++prefix=@CMAKE_INSTALL_PREFIX@
++libdir=${prefix}/lib
++includedir=${prefix}/include
++
++Name: qmdnsengine
++Description: Qt implementation of multicast DNS
++Version: @PROJECT_VERSION@
++Requires: Qt5Core Qt5Network
++Libs: -L${libdir} -lqmdnsengine
++Cflags: -I${includedir}
