@@ -22,16 +22,13 @@ Requires: pkgconfig(Qt5Network)
 %{summary}.
 
 %prep
-%setup -q -n %{name}-%{version}/upstream
-%patch1 -p1
+%autosetup -p1 -n %{name}-%{version}/upstream
 
 %build
-mkdir -p build && cd build
-%cmake -DCMAKE_BUILD_TYPE=Release ..
+%cmake -DCMAKE_BUILD_TYPE=Release
 %make_build
 
 %install
-cd build
 %make_install
 
 %post
@@ -41,11 +38,9 @@ cd build
 /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %{_libdir}/libqmdnsengine.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_libdir}/libqmdnsengine.so
 %{_libdir}/cmake/%{name}
 %{_libdir}/pkgconfig/%{name}.pc
