@@ -9,7 +9,7 @@ index 53ff6ac..04390a1 100644
 +
 +configure_file(qmdnsengine.pc.in "${CMAKE_CURRENT_BINARY_DIR}/qmdnsengine.pc" @ONLY)
 +install(FILES "${CMAKE_CURRENT_BINARY_DIR}/qmdnsengine.pc"
-+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
++    DESTINATION "${LIB_INSTALL_DIR}/pkgconfig"
 +)
 diff --git a/src/qmdnsengine.pc.in b/src/qmdnsengine.pc.in
 new file mode 100644
@@ -18,7 +18,7 @@ index 0000000..f89df28
 +++ b/src/qmdnsengine.pc.in
 @@ -0,0 +1,10 @@
 +prefix=@CMAKE_INSTALL_PREFIX@
-+libdir=${prefix}/lib
++libdir=@LIB_INSTALL_DIR@
 +includedir=${prefix}/include
 +
 +Name: qmdnsengine
